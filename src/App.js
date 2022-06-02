@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Profile from "./component/Profile"
+class App extends React.Component {
+  constructor(props){
+    console.log("constructor()")
+    super(props)
+    this.state = {isVisible:false}
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  }
+
+
+  toggleVisibility = ()=>{
+    this.setState ({isVisible: !this.state.isVisible})
+  }
+
+
+
+  render() {
+    return (
+
+            <div>
+              <div>
+              <button onClick={this.toggleVisibility} > {this.state.isVisible ? "hide" : "show"}</button>
+              </div> 
+
+            {this.state.isVisible && <Profile/>}</div>
+        )}
+
+
 }
-
 export default App;
